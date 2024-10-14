@@ -1,19 +1,19 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  [pull_request, push]:
+  pull_request:
+  push:
 permissions:
   contents: read
   actions: write
-#concurrency: 만약 동일한 것이동시에 여러 job을 실행할 수 있는데, 이를 제한하는 옵션
+# concurrency: 만약 동일한 것이 동시에 여러 job을 실행할 수 있는데, 이를 제한하는 옵션
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-  job: ${{ github.job }}
 jobs:
   main:
     runs-on: ubuntu-latest
-    # 스탭에서 error가 나도 계속 진행 할지
+    # 스탭에서 error가 나도 계속 진행할지
     continue-on-error: false
     strategy:
       # fail-fast: true는 한개의 job이 실패하면 다른 job을 실행하지 않음
@@ -26,17 +26,14 @@ jobs:
       - name: "2. Setup Node.js"
         uses: actions/setup-node@v2
         with:
-            node-version: ${{ matrix.node}}
+          node-version: ${{ matrix.node }}
       - name: "3. Install"
-      # ci: clean install(구체적인 버전을 설치)
         run: npm ci
       - name: "4. Build"
         run: npm run build
       - name: "5. Test"
         run: npm run test
-      - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-      
-  
+      - name: "6. Upload coverage to Codecov"
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
