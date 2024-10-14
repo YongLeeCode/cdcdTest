@@ -48,8 +48,8 @@ export default function Page() {
             fontSize: "14px",
             margin: "18px",
           }}
-          onClick={async () => {
-            await Sentry.captureMessage("Something went wrong!", "error");
+          onClick={ () => {
+            Sentry.captureMessage("Something went wrong!", "error");
             // await Sentry.startSpan({
             //   name: 'Example Frontend Span',
             //   op: 'test'
