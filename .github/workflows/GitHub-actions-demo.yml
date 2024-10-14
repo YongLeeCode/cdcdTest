@@ -13,7 +13,7 @@ jobs:
       - name: "2. Setup Node.js"
         uses: actions/setup-node@v2
         with:
-          node-version: 18.x
+          node-version: [18, 20]
       - name: "3. Install"
       # ci: clean install(구체적인 버전을 설치)
         run: npm ci
