@@ -6,7 +6,7 @@ import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
   dsn: "https://d39cc3085cc42c56e0d81fa97305bf4e@o4508120091852800.ingest.us.sentry.io/4508120124096512",
-  ignoreErrors: ["fb_xd_fragment", /^Something went wrong$/],
+  ignoreErrors: ["fb_xd_fragment", /^Something went wrong!$/],
   // Add optional integrations for additional features
   integrations: [
     Sentry.replayIntegration(),
