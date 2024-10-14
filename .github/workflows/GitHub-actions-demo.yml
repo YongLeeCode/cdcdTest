@@ -30,6 +30,8 @@ jobs:
         run: npm ci
       - name: "4. Build"
         run: npm run build
+        env:
+          sentry_auth_token: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: "5. Test"
         run: npm run test
       - name: "6. Upload coverage to Codecov"
