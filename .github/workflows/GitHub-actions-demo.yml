@@ -6,6 +6,7 @@ on:
       - main
 permissions:
   contents: read
+  actions: write
 #concurrency: 만약 동일한 것이동시에 여러 job을 실행할 수 있는데, 이를 제한하는 옵션
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
