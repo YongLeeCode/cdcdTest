@@ -14,4 +14,8 @@ describe("Home", () => {
 
     expect(heading).toBeInTheDocument();
   });
+
+  test("success test", () => {
+    expect(true).toBe(true);
+  })
 });
