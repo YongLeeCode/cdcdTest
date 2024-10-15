@@ -1,6 +1,5 @@
-# This config was automatically generated from your source code
-# Stacks detected: cicd:github-actions:.github/workflows,deps:node:.,test:jest:
 version: 2.1
+
 jobs:
   print:
     docker:
@@ -13,4 +12,4 @@ jobs:
 workflows:
   hello_workflow:
     jobs:
-    
+      - print
